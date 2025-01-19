@@ -3,7 +3,7 @@ package reversi;
 import java.util.*;
 
 public class GameSystem {
-    private ReversiBoard reversiBoard;
+    private ReversiBoard reversiBoard;  // 未使用の変数
     private ReversiCell[][] board;
 
     public GameSystem(ReversiBoard reversiBoard) {
@@ -12,7 +12,7 @@ public class GameSystem {
     }
 
     // 駒を置いて反転させる
-    public boolean placePiece(int row, int col, ReversiCell piece) {
+    public boolean placePiece(int row, int col, ReversiCell piece) { // boolean型はCan~~とかIs~~の変数名に
         if (isValidMove(row, col, piece)) {
             board[row][col] = piece; // 駒を置く
             List<int[]> flippablePositions = getFlippablePositions(row, col, piece);
@@ -38,11 +38,15 @@ public class GameSystem {
         int[][] directions = {{-1, -1}, {-1, 0}, {-1, 1}, {0, -1}, {0, 1}, {1, -1}, {1, 0}, {1, 1}};
 
         for (int[] dir : directions) {
-            int x = row + dir[0], y = col + dir[1];
+            int x = row + dir[0]; // 基本的に変数名は略さないように
+            int y = col + dir[1];
             List<int[]> tempPositions = new ArrayList<>();
             boolean hasOpponent = false;
 
-            while (x >= 0 && x < board.length && y >= 0 && y < board[0].length) {
+            while (x >= 0
+                && x < board.length
+                && y >= 0
+                && y < board[0].length) {
                 if (board[x][y] == ReversiCell.EMPTY) break;
                 if (board[x][y] == currentPlayer) {
                     if (hasOpponent) {
@@ -66,7 +70,7 @@ public class GameSystem {
 
     // 勝者を判定
     public ReversiCell checkWinner() {
-        int blackCount = 0, whiteCount = 0;
+        int blackCount = 0, whiteCount = 0; // これはフィールドに持っておいた方が後々楽かも
 
         for (ReversiCell[] row : board) {
             for (ReversiCell cell : row) {

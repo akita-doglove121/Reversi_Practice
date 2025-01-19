@@ -11,8 +11,8 @@ public class ReversiBoard {
 	
 	//盤の初期化
 	private void initialaizeBoard() {
-		
-		for(int i = 0; i < 8; i++) {
+		// ここの空行は削除で。あとはタブがスペースとタブになってるところあるからちょっと注意されたし
+		for(int i = 0; i < 8; i++) { // 複数回使用するなら基本的に固定値は直接使用しない方がいいかも
 			for(int j = 0; j < 8; j++) {
 				board[i][j] = ReversiCell.EMPTY;
 			}
